@@ -230,6 +230,10 @@
             // Handle mouseup on document for updating the selection in the toolbar
             this.on(this.document.documentElement, 'mouseup', this.handleDocumentMouseup.bind(this));
 
+            if (this.isMobile) {
+                this.document.addEventListener('selectionchange', this.handleSelectionChange.bind(this));
+            }
+
             // Add a scroll event for sticky toolbar
             if (this.static && this.sticky) {
                 // On scroll (capture), re-position the toolbar
@@ -255,6 +259,10 @@
                     MediumEditor.util.isDescendant(this.getToolbarElement(), event.target)) {
                 return false;
             }
+            this.checkState();
+        },
+
+        handleSelectionChange: function () {
             this.checkState();
         },
 
@@ -652,14 +660,20 @@
             middleBoundary = boundary.left + boundary.width / 2;
             positions.top += boundary.top - toolbarHeight;
 
-            if (boundary.top < buttonHeight) {
+            if (this.isMobile) {
                 toolbarElement.classList.add('medium-toolbar-arrow-over');
                 toolbarElement.classList.remove('medium-toolbar-arrow-under');
-                positions.top += buttonHeight + boundary.height - this.diffTop;
+                positions.top += buttonHeight + boundary.height + 10;
             } else {
-                toolbarElement.classList.add('medium-toolbar-arrow-under');
-                toolbarElement.classList.remove('medium-toolbar-arrow-over');
-                positions.top += this.diffTop;
+                if (boundary.top < buttonHeight) {
+                    toolbarElement.classList.add('medium-toolbar-arrow-over');
+                    toolbarElement.classList.remove('medium-toolbar-arrow-under');
+                    positions.top += buttonHeight + boundary.height - this.diffTop;
+                } else {
+                    toolbarElement.classList.add('medium-toolbar-arrow-under');
+                    toolbarElement.classList.remove('medium-toolbar-arrow-over');
+                    positions.top += this.diffTop;
+                }
             }
 
             if (middleBoundary < halfOffsetWidth) {
