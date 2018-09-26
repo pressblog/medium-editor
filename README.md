@@ -25,7 +25,7 @@ MediumEditor has been written using vanilla JavaScript, no additional frameworks
 
 ### Demo
 
-__demo__: [http://yabwe.github.io/medium-editor/](http://yabwe.github.io/medium-editor/)
+__demo__: [https://pressblog.github.io/medium-editor/demo/](https://pressblog.github.io/medium-editor/demo/)
 
 ### Installation
 
