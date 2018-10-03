@@ -7269,11 +7269,6 @@ MediumEditor.extensions = {};
         }
 
         cmdValueArgument = opts && opts.value;
-        window.console.log(
-            this.options.ownerDocument,
-            MediumEditor.selection.getSelectionRange(this.options.ownerDocument),
-            MediumEditor.selection.getSelectedParentElement(MediumEditor.selection.getSelectionRange(this.options.ownerDocument))
-        );
         return this.options.ownerDocument.execCommand(action, false, cmdValueArgument);
     }
 
