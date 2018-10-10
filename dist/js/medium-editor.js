@@ -6154,6 +6154,10 @@ MediumEditor.extensions = {};
         },
 
         handleSelectionChange: function () {
+            // フォーカスノードがツールバー内ならcheckStateをtriggerしない
+            if (window.getSelection() && MediumEditor.util.isDescendant(this.getToolbarElement(), window.getSelection().focusNode)) {
+                return false;
+            }
             this.checkState();
         },
 
