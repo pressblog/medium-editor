@@ -48,6 +48,8 @@
         // http://stackoverflow.com/a/11752084/569101
         isMac: (window.navigator.platform.toUpperCase().indexOf('MAC') >= 0),
 
+        isMobile: (window.navigator.userAgent.indexOf('iPhone') >= 0 && window.navigator.userAgent.indexOf('iPad') === -1) || window.navigator.userAgent.indexOf('iPod') >= 0 || window.navigator.userAgent.indexOf('Android') >= 0,
+
         // https://github.com/jashkenas/underscore
         // Lonely letter MUST USE the uppercase code
         keyCode: {

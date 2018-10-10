@@ -454,6 +454,8 @@ MediumEditor.extensions = {};
         // http://stackoverflow.com/a/11752084/569101
         isMac: (window.navigator.platform.toUpperCase().indexOf('MAC') >= 0),
 
+        isMobile: (window.navigator.userAgent.indexOf('iPhone') >= 0 && window.navigator.userAgent.indexOf('iPad') === -1) || window.navigator.userAgent.indexOf('iPod') >= 0 || window.navigator.userAgent.indexOf('Android') >= 0,
+
         // https://github.com/jashkenas/underscore
         // Lonely letter MUST USE the uppercase code
         keyCode: {
@@ -6119,7 +6121,7 @@ MediumEditor.extensions = {};
             // Handle mouseup on document for updating the selection in the toolbar
             this.on(this.document.documentElement, 'mouseup', this.handleDocumentMouseup.bind(this));
 
-            if (this.isMobile) {
+            if (MediumEditor.util.isMobile) {
                 this.document.addEventListener('selectionchange', this.handleSelectionChange.bind(this));
             }
 
@@ -6549,7 +6551,7 @@ MediumEditor.extensions = {};
             middleBoundary = boundary.left + boundary.width / 2;
             positions.top += boundary.top - toolbarHeight;
 
-            if (this.isMobile) {
+            if (MediumEditor.util.isMobile) {
                 toolbarElement.classList.add('medium-toolbar-arrow-over');
                 toolbarElement.classList.remove('medium-toolbar-arrow-under');
                 positions.top += buttonHeight + boundary.height + 10;

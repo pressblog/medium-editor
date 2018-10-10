@@ -230,7 +230,7 @@
             // Handle mouseup on document for updating the selection in the toolbar
             this.on(this.document.documentElement, 'mouseup', this.handleDocumentMouseup.bind(this));
 
-            if (this.isMobile) {
+            if (MediumEditor.util.isMobile) {
                 this.document.addEventListener('selectionchange', this.handleSelectionChange.bind(this));
             }
 
@@ -660,7 +660,7 @@
             middleBoundary = boundary.left + boundary.width / 2;
             positions.top += boundary.top - toolbarHeight;
 
-            if (this.isMobile) {
+            if (MediumEditor.util.isMobile) {
                 toolbarElement.classList.add('medium-toolbar-arrow-over');
                 toolbarElement.classList.remove('medium-toolbar-arrow-under');
                 positions.top += buttonHeight + boundary.height + 10;
