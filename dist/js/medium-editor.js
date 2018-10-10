@@ -3224,7 +3224,11 @@ MediumEditor.extensions = {};
             MediumEditor.Extension.prototype.init.apply(this, arguments);
 
             this.button = this.createButton();
-            this.on(this.button, 'click', this.handleClick.bind(this));
+            if (MediumEditor.util.isMobile) {
+                this.on(this.button, 'touchend', this.handleClick.bind(this));
+            } else {
+                this.on(this.button, 'click', this.handleClick.bind(this));
+            }
         },
 
         /* getButton: [function ()]
