@@ -108,6 +108,9 @@
 
             toolbar.id = 'medium-editor-toolbar-' + this.getEditorId();
             toolbar.className = 'medium-editor-toolbar';
+            if (MediumEditor.util.isMobile) {
+                toolbar.className += ' medium-editor-toolbar-mobile';
+            }
 
             if (this.static) {
                 toolbar.className += ' static-toolbar';

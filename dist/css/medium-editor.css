@@ -178,6 +178,16 @@
 .medium-editor-toolbar-form-active {
   display: block; }
 
+.medium-editor-toolbar-mobile .medium-editor-toolbar-input {
+  width: calc(100vw - 86px); }
+
+.medium-editor-toolbar-mobile a {
+  width: 42px;
+  height: 42px;
+  margin: 0;
+  text-align: center;
+  line-height: 42px; }
+
 .medium-editor-toolbar-actions:after {
   clear: both;
   content: "";
